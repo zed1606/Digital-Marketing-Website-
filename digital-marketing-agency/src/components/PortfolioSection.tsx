@@ -2,9 +2,9 @@
 
 "use client";
 
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import Image from 'next/image'; // Import next/image
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import Image from "next/image"; // Import next/image
 
 interface PortfolioItemProps {
   title: string;
@@ -21,17 +21,17 @@ const PortfolioItemCard: React.FC<PortfolioItemProps> = ({ title, description, i
       {/* Image placeholder: Replaced with next/image if imageUrl is provided */}
       <div className="relative w-full h-48 bg-gray-700 rounded-md mb-4 flex items-center justify-center overflow-hidden">
         {imageUrl ? (
-          // When actual images are used, ensure 'imageUrl' is a path Next.js can resolve (e.g., in /public or a remote URL configured in next.config.js)
+          // When actual images are used, ensure "imageUrl" is a path Next.js can resolve (e.g., in /public or a remote URL configured in next.config.js)
           // Provide width and height props for optimal performance, or use fill and ensure parent has relative positioning and dimensions.
           <Image 
             src={imageUrl} 
             alt={title} 
             fill 
-            style={{ objectFit: 'cover' }}
+            style={{ objectFit: "cover" }}
             className="rounded-md"
-            // For local images, import them: import exampleImage from '/public/images/example.jpg'; and use src={exampleImage}
+            // For local images, import them: import exampleImage from "/public/images/example.jpg"; and use src={exampleImage}
             // For remote images, configure domains in next.config.js:
-            // module.exports = { images: { remotePatterns: [{ protocol: 'https', hostname: 'example.com' }] } }
+            // module.exports = { images: { remotePatterns: [{ protocol: "https", hostname: "example.com" }] } }
           />
         ) : (
           <span className="text-gray-500 text-xl">Image Placeholder</span>
@@ -51,31 +51,31 @@ const PortfolioItemCard: React.FC<PortfolioItemProps> = ({ title, description, i
 const PortfolioSection: React.FC = () => {
   const portfolioItems: PortfolioItemProps[] = [
     {
-      title: 'E-commerce Surge for AlphaGoods',
-      description: 'Transformed AlphaGoods\' online store with a full-funnel SEO and content strategy, skyrocketing their market share.',
-      // imageUrl: '/images/portfolio-ecommerce.jpg', 
-      beforeResult: 'Stagnant Sales, Low Visibility',
-      afterResult: '+320% Organic Revenue, Top 3 Rankings for 50+ Keywords',
+      title: "E-commerce Surge for AlphaGoods",
+      description: "Transformed AlphaGoods&apos; online store with a full-funnel SEO and content strategy, skyrocketing their market share.",
+      // imageUrl: "/images/portfolio-ecommerce.jpg", 
+      beforeResult: "Stagnant Sales, Low Visibility",
+      afterResult: "+320% Organic Revenue, Top 3 Rankings for 50+ Keywords",
     },
     {
-      title: 'Lead Gen Revolution for BetaServices',
-      description: 'Engineered a high-velocity lead generation machine for BetaServices using targeted PPC and conversion-optimized landing pages.',
-      // imageUrl: '/images/portfolio-social.jpg',
-      beforeResult: 'High CPA, Inconsistent Lead Flow',
-      afterResult: '-60% Cost Per Acquisition, +400% Qualified Leads Monthly',
+      title: "Lead Gen Revolution for BetaServices",
+      description: "Engineered a high-velocity lead generation machine for BetaServices using targeted PPC and conversion-optimized landing pages.",
+      // imageUrl: "/images/portfolio-social.jpg",
+      beforeResult: "High CPA, Inconsistent Lead Flow",
+      afterResult: "-60% Cost Per Acquisition, +400% Qualified Leads Monthly",
     },
     {
-      title: 'Brand Dominance for GammaTech',
-      description: 'Launched GammaTech into the spotlight with an explosive social media and influencer marketing campaign.',
-      // imageUrl: '/images/portfolio-ppc.jpg',
-      beforeResult: 'Minimal Brand Awareness',
-      afterResult: '+1M Social Reach, 25% Engagement Rate Increase',
+      title: "Brand Dominance for GammaTech",
+      description: "Launched GammaTech into the spotlight with an explosive social media and influencer marketing campaign.",
+      // imageUrl: "/images/portfolio-ppc.jpg",
+      beforeResult: "Minimal Brand Awareness",
+      afterResult: "+1M Social Reach, 25% Engagement Rate Increase",
     },
      {
-      title: 'Content Authority for DeltaBlog',
-      description: 'Established DeltaBlog as the go-to resource in their niche through pillar content and strategic distribution.',
-      // imageUrl: '/images/portfolio-content.jpg',
-      beforeResult: 'Scattered Content, Low Engagement',
+      title: "Content Authority for DeltaBlog",
+      description: "Established DeltaBlog as the go-to resource in their niche through pillar content and strategic distribution.",
+      // imageUrl: "/images/portfolio-content.jpg",
+      beforeResult: "Scattered Content, Low Engagement",
       afterResult: 'x5 Search Visibility, #1 for "Industry Insights"',
     }
   ];
@@ -92,11 +92,11 @@ const PortfolioSection: React.FC = () => {
       gsap.fromTo(headingElement,
         { opacity: 0, y: 50 },
         {
-          opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+          opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
           scrollTrigger: {
             trigger: headingElement,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
+            start: "top 80%",
+            toggleActions: "play none none none",
           }
         }
       );
@@ -107,11 +107,11 @@ const PortfolioSection: React.FC = () => {
         gsap.fromTo(item,
           { opacity: 0, y: 50 },
           {
-            opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+            opacity: 1, y: 0, duration: 0.6, ease: "power3.out",
             scrollTrigger: {
               trigger: item,
-              start: 'top 85%',
-              toggleActions: 'play none none none',
+              start: "top 85%",
+              toggleActions: "play none none none",
             },
             delay: index * 0.2 // Stagger animation
           }

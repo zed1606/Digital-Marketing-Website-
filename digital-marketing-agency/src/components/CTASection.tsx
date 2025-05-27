@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 const CTASection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -21,11 +21,11 @@ const CTASection: React.FC = () => {
         gsap.fromTo(item.ref.current,
           { opacity: 0, y: 50 },
           {
-            opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+            opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
             scrollTrigger: {
               trigger: item.ref.current,
-              start: 'top 85%', // Adjust as needed
-              toggleActions: 'play none none none',
+              start: "top 85%", // Adjust as needed
+              toggleActions: "play none none none",
             },
             delay: item.delay
           }
@@ -41,7 +41,7 @@ const CTASection: React.FC = () => {
           Stop Dreaming, Start Dominating.
         </h2>
         <p ref={paragraphRef} className="text-lg md:text-xl font-poppins mb-10 max-w-2xl mx-auto text-gray-300 opacity-0">
-          Your competitors are strategizing. It's time to outmaneuver them. Let's build your market leadership, together.
+          Your competitors are strategizing. It&apos;s time to outmaneuver them. Let&apos;s build your market leadership, together.
         </p>
         <button 
           ref={buttonRef}

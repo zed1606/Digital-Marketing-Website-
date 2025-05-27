@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const GSAPInitializer: React.FC = () => {
   useEffect(() => {
@@ -10,7 +10,7 @@ const GSAPInitializer: React.FC = () => {
     console.log("GSAP and ScrollTrigger registered");
   }, []);
 
-  return null; // This component doesn't render anything
+  return null; // This component doesn&apos;t render anything
 };
 
 export default GSAPInitializer;

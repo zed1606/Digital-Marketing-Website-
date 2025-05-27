@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -13,28 +13,28 @@ const HeroSection: React.FC = () => {
     // Fade-in animations for headline and CTA button
     gsap.fromTo(headlineRef.current, 
       { opacity: 0, y: 30 }, 
-      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.2 }
+      { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.2 }
     );
     gsap.fromTo(ctaButtonRef.current, 
       { opacity: 0, y: 30 }, 
-      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.5 }
+      { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.5 }
     );
 
     // Floating particles animation
     if (particlesRef.current) {
       const numParticles = 20;
       const particlesContainer = particlesRef.current;
-      particlesContainer.innerHTML = ''; // Clear previous particles if any
+      particlesContainer.innerHTML = ""; // Clear previous particles if any
 
       for (let i = 0; i < numParticles; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
         const size = Math.random() * 10 + 5; // Size between 5px and 15px
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
-        particle.style.position = 'absolute';
-        particle.style.backgroundColor = Math.random() > 0.5 ? 'rgba(0, 255, 0, 0.3)' : 'rgba(255, 255, 255, 0.3)'; // Green or white
-        particle.style.borderRadius = '50%';
+        particle.style.position = "absolute";
+        particle.style.backgroundColor = Math.random() > 0.5 ? "rgba(0, 255, 0, 0.3)" : "rgba(255, 255, 255, 0.3)"; // Green or white
+        particle.style.borderRadius = "50%";
         particle.style.left = `${Math.random() * 100}%`;
         particle.style.top = `${Math.random() * 100}%`;
         particlesContainer.appendChild(particle);
@@ -45,7 +45,7 @@ const HeroSection: React.FC = () => {
           duration: Math.random() * 20 + 10, // Duration between 10 and 30 seconds
           repeat: -1,
           yoyo: true,
-          ease: 'sine.inOut',
+          ease: "sine.inOut",
           delay: Math.random() * 2,
         });
       }

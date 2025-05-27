@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 // ScrollTrigger is already registered in GSAPInitializer.tsx
 
 interface ServiceCardProps {
@@ -36,20 +36,20 @@ const ServicesSection: React.FC = () => {
 
   const services: ServiceCardProps[] = [
     {
-      title: 'Search Engine Optimization',
-      description: 'Dominate search rankings and drive organic traffic that converts. Our SEO strategies are data-backed and results-obsessed.',
+      title: "Search Engine Optimization",
+      description: "Dominate search rankings and drive organic traffic that converts. Our SEO strategies are data-backed and results-obsessed.",
     },
     {
-      title: 'Pay-Per-Click Advertising',
-      description: 'Instant impact, measurable ROI. We craft targeted PPC campaigns that put your brand front and center, fast.',
+      title: "Pay-Per-Click Advertising",
+      description: "Instant impact, measurable ROI. We craft targeted PPC campaigns that put your brand front and center, fast.",
     },
     {
-      title: 'Social Media Marketing',
-      description: 'Ignite your brand across social platforms. We build engaged communities and transform followers into fanatics.',
+      title: "Social Media Marketing",
+      description: "Ignite your brand across social platforms. We build engaged communities and transform followers into fanatics.",
     },
     {
-      title: 'Content Marketing',
-      description: 'Fuel your growth with content that captivates and converts. We tell your story, your audience listens.',
+      title: "Content Marketing",
+      description: "Fuel your growth with content that captivates and converts. We tell your story, your audience listens.",
     },
   ];
 
@@ -61,11 +61,11 @@ const ServicesSection: React.FC = () => {
       gsap.fromTo(headingElement,
         { opacity: 0, y: 50 },
         {
-          opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+          opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
           scrollTrigger: {
             trigger: headingElement,
-            start: 'top 80%', // Trigger when 80% of the element is in view
-            toggleActions: 'play none none none', // Play animation once
+            start: "top 80%", // Trigger when 80% of the element is in view
+            toggleActions: "play none none none", // Play animation once
           }
         }
       );
@@ -76,11 +76,11 @@ const ServicesSection: React.FC = () => {
         gsap.fromTo(card,
           { opacity: 0, y: 50 },
           {
-            opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+            opacity: 1, y: 0, duration: 0.6, ease: "power3.out",
             scrollTrigger: {
               trigger: card,
-              start: 'top 85%',
-              toggleActions: 'play none none none',
+              start: "top 85%",
+              toggleActions: "play none none none",
             },
             delay: index * 0.15 // Stagger animation for cards
           }

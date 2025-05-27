@@ -1,6 +1,6 @@
 "use client"; // Required for useState, etc.
 
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from "react";
 
 interface FormData {
   name: string;
@@ -21,19 +21,19 @@ const CheckmarkIcon = () => (
 );
 
 const ContactForm: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState<FormData>({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const validate = (): FormErrors => {
     const newErrors: FormErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required.';
+    if (!formData.name.trim()) newErrors.name = "Name is required.";
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required.';
+      newErrors.email = "Email is required.";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid.';
+      newErrors.email = "Email is invalid.";
     }
-    if (!formData.message.trim()) newErrors.message = 'Message is required.';
+    if (!formData.message.trim()) newErrors.message = "Message is required.";
     return newErrors;
   };
 
@@ -51,10 +51,10 @@ const ContactForm: React.FC = () => {
       setErrors(validationErrors);
       setIsSubmitted(false);
     } else {
-      console.log('Form data submitted:', formData);
+      console.log("Form data submitted:", formData);
       // Simulate successful submission
       setErrors({});
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: "", email: "", message: "" });
       setIsSubmitted(true);
       // Hide success message after a few seconds
       setTimeout(() => setIsSubmitted(false), 5000); 
@@ -88,7 +88,7 @@ const ContactForm: React.FC = () => {
               id="name"
               value={formData.name}
               onChange={handleChange}
-              className={`w-full p-3 bg-gray-800 border ${errors.name ? 'border-red-500' : 'border-gray-700'} rounded-md text-white focus:ring-green-500 focus:border-green-500 transition-colors`}
+              className={`w-full p-3 bg-gray-800 border ${errors.name ? "border-red-500" : "border-gray-700"} rounded-md text-white focus:ring-green-500 focus:border-green-500 transition-colors`}
             />
             {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
           </div>
@@ -100,7 +100,7 @@ const ContactForm: React.FC = () => {
               id="email"
               value={formData.email}
               onChange={handleChange}
-              className={`w-full p-3 bg-gray-800 border ${errors.email ? 'border-red-500' : 'border-gray-700'} rounded-md text-white focus:ring-green-500 focus:border-green-500 transition-colors`}
+              className={`w-full p-3 bg-gray-800 border ${errors.email ? "border-red-500" : "border-gray-700"} rounded-md text-white focus:ring-green-500 focus:border-green-500 transition-colors`}
             />
             {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
           </div>
@@ -112,7 +112,7 @@ const ContactForm: React.FC = () => {
               rows={4}
               value={formData.message}
               onChange={handleChange}
-              className={`w-full p-3 bg-gray-800 border ${errors.message ? 'border-red-500' : 'border-gray-700'} rounded-md text-white focus:ring-green-500 focus:border-green-500 transition-colors`}
+              className={`w-full p-3 bg-gray-800 border ${errors.message ? "border-red-500" : "border-gray-700"} rounded-md text-white focus:ring-green-500 focus:border-green-500 transition-colors`}
             />
             {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
           </div>
