@@ -3,6 +3,7 @@ import { Inter, Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header"; // Import Header
 import Footer from "@/components/Footer"; // Import Footer
+import GSAPInitializer from "@/components/GSAPInitializer"; // Import GSAPInitializer
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${poppins.variable} ${inter.variable} antialiased flex flex-col min-h-screen`}
       >
+        <GSAPInitializer /> {/* Add GSAPInitializer here */}
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />

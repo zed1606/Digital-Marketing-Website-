@@ -1,4 +1,10 @@
-import React from 'react';
+"use client";
+
+"use client";
+
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import Image from 'next/image'; // Import next/image
 
 interface PortfolioItemProps {
   title: string;
@@ -6,15 +12,27 @@ interface PortfolioItemProps {
   imageUrl?: string; // Optional image URL
   beforeResult: string;
   afterResult: string;
+  className?: string; // Add className for animation
 }
 
-const PortfolioItemCard: React.FC<PortfolioItemProps> = ({ title, description, imageUrl, beforeResult, afterResult }) => {
+const PortfolioItemCard: React.FC<PortfolioItemProps> = ({ title, description, imageUrl, beforeResult, afterResult, className }) => {
   return (
-    <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-green-500/50 transform hover:scale-105 transition-all duration-300 ease-in-out border border-transparent hover:border-green-500">
-      {/* Placeholder for image/visual */}
-      <div className="w-full h-48 bg-gray-700 rounded-md mb-4 flex items-center justify-center">
+    <div className={`bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-green-500/50 transform hover:scale-105 transition-all duration-300 ease-in-out border border-transparent hover:border-green-500 ${className}`}>
+      {/* Image placeholder: Replaced with next/image if imageUrl is provided */}
+      <div className="relative w-full h-48 bg-gray-700 rounded-md mb-4 flex items-center justify-center overflow-hidden">
         {imageUrl ? (
-          <img src={imageUrl} alt={title} className="object-cover w-full h-full rounded-md" />
+          // When actual images are used, ensure 'imageUrl' is a path Next.js can resolve (e.g., in /public or a remote URL configured in next.config.js)
+          // Provide width and height props for optimal performance, or use fill and ensure parent has relative positioning and dimensions.
+          <Image 
+            src={imageUrl} 
+            alt={title} 
+            fill 
+            style={{ objectFit: 'cover' }}
+            className="rounded-md"
+            // For local images, import them: import exampleImage from '/public/images/example.jpg'; and use src={exampleImage}
+            // For remote images, configure domains in next.config.js:
+            // module.exports = { images: { remotePatterns: [{ protocol: 'https', hostname: 'example.com' }] } }
+          />
         ) : (
           <span className="text-gray-500 text-xl">Image Placeholder</span>
         )}
@@ -33,42 +51,82 @@ const PortfolioItemCard: React.FC<PortfolioItemProps> = ({ title, description, i
 const PortfolioSection: React.FC = () => {
   const portfolioItems: PortfolioItemProps[] = [
     {
-      title: 'E-commerce SEO Overhaul',
-      description: 'Revamped an online store\'s SEO strategy, leading to a significant increase in organic traffic and sales.',
-      // imageUrl: '/images/portfolio-ecommerce.jpg', // Example image path
-      beforeResult: '500 daily organic visitors',
-      afterResult: '2,500 daily organic visitors',
+      title: 'E-commerce Surge for AlphaGoods',
+      description: 'Transformed AlphaGoods\' online store with a full-funnel SEO and content strategy, skyrocketing their market share.',
+      // imageUrl: '/images/portfolio-ecommerce.jpg', 
+      beforeResult: 'Stagnant Sales, Low Visibility',
+      afterResult: '+320% Organic Revenue, Top 3 Rankings for 50+ Keywords',
     },
     {
-      title: 'Startup Social Media Launch',
-      description: 'Launched a new startup\'s social media presence, achieving rapid brand awareness and community engagement.',
+      title: 'Lead Gen Revolution for BetaServices',
+      description: 'Engineered a high-velocity lead generation machine for BetaServices using targeted PPC and conversion-optimized landing pages.',
       // imageUrl: '/images/portfolio-social.jpg',
-      beforeResult: '0 social media followers',
-      afterResult: '10,000+ followers in 3 months',
+      beforeResult: 'High CPA, Inconsistent Lead Flow',
+      afterResult: '-60% Cost Per Acquisition, +400% Qualified Leads Monthly',
     },
     {
-      title: 'Local Business PPC Campaign',
-      description: 'Managed a PPC campaign for a local service business, dramatically increasing qualified leads and conversion rates.',
+      title: 'Brand Dominance for GammaTech',
+      description: 'Launched GammaTech into the spotlight with an explosive social media and influencer marketing campaign.',
       // imageUrl: '/images/portfolio-ppc.jpg',
-      beforeResult: '5 leads per week',
-      afterResult: '25 leads per week',
+      beforeResult: 'Minimal Brand Awareness',
+      afterResult: '+1M Social Reach, 25% Engagement Rate Increase',
     },
      {
-      title: 'Tech Blog Content Strategy',
-      description: 'Developed and executed a content strategy for a tech blog, establishing it as an authority in its niche.',
+      title: 'Content Authority for DeltaBlog',
+      description: 'Established DeltaBlog as the go-to resource in their niche through pillar content and strategic distribution.',
       // imageUrl: '/images/portfolio-content.jpg',
-      beforeResult: 'Low domain authority, minimal traffic',
-      afterResult: 'High domain authority, 50k monthly readers',
+      beforeResult: 'Scattered Content, Low Engagement',
+      afterResult: 'x5 Search Visibility, #1 for "Industry Insights"',
     }
   ];
 
+  const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const itemsContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const headingElement = headingRef.current;
+    const items = itemsContainerRef.current?.children;
+
+    if (headingElement) {
+      gsap.fromTo(headingElement,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: {
+            trigger: headingElement,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          }
+        }
+      );
+    }
+
+    if (items) {
+      Array.from(items).forEach((item, index) => {
+        gsap.fromTo(item,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+            },
+            delay: index * 0.2 // Stagger animation
+          }
+        );
+      });
+    }
+  }, []);
+
   return (
-    <section className="bg-black text-white py-16 px-4 sm:px-8">
+    <section ref={sectionRef} className="bg-black text-white py-16 px-4 sm:px-8">
       <div className="container mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold font-montserrat text-center mb-12">
-          Our Work
+        <h2 ref={headingRef} className="text-4xl md:text-5xl font-bold font-montserrat text-center mb-12 opacity-0">
+          Proven Results, Real Impact
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8"> {/* Using 2 columns for larger items */}
+        <div ref={itemsContainerRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8"> {/* Using 2 columns for larger items */}
           {portfolioItems.map((item) => (
             <PortfolioItemCard 
               key={item.title} 
@@ -77,6 +135,7 @@ const PortfolioSection: React.FC = () => {
               // imageUrl={item.imageUrl}
               beforeResult={item.beforeResult}
               afterResult={item.afterResult}
+              className="opacity-0" // Initial state for animation
             />
           ))}
         </div>

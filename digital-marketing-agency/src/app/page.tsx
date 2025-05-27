@@ -3,6 +3,7 @@ import ServicesSection from '@/components/ServicesSection'; // Import ServicesSe
 import PortfolioSection from '@/components/PortfolioSection'; // Import PortfolioSection
 import TestimonialsSection from '@/components/TestimonialsSection'; // Import TestimonialsSection
 import CTASection from '@/components/CTASection'; // Import CTASection
+import ContactForm from '@/components/ContactForm'; // Import ContactForm
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <PortfolioSection />
       <TestimonialsSection />
       <CTASection />
+      <ContactForm /> {/* Add ContactForm section */}
       {/* You can add other page content here if needed */}
     </>
   );
