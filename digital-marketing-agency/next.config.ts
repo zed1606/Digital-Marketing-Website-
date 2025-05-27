@@ -25,3 +25,11 @@ export default nextConfig;
 module.exports = {
   output: 'export' // Enables static HTML exports
 }
+
+
+// next.config.js
+module.exports = {
+  output: 'export', // Generates static HTML files
+  basePath: process.env.NODE_ENV === 'production' ? '/Digital-Marketing-Website-' : '', // For GitHub Pages subpath
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/Digital-Marketing-Website-/' : '', // For assets (CSS, JS)
+};
